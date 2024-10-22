@@ -4,7 +4,7 @@ import { getAPIKey } from '~/lib/.server/llm/api-key';
 import { createAnthropic } from '@ai-sdk/anthropic';
 import { createOpenAI } from '@ai-sdk/openai';
 import { createGoogleGenerativeAI } from '@ai-sdk/google';
-import { ollama } from 'ollama-ai-provider';
+import { createOllama } from 'ollama-ai-provider';
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 
 export function getAnthropicModel(apiKey: string, model: string) {
@@ -41,6 +41,11 @@ export function getGroqModel(apiKey: string, model: string) {
 }
 
 export function getOllamaModel(model: string) {
+  const baseURL = process.env.OLLAMA_API_BASE_URL || 'http://localhost:11434/api';
+  const ollama = createOllama({
+    baseURL: baseURL,
+  });
+
   return ollama(model);
 }
 
