@@ -43,7 +43,7 @@ export function getGroqModel(apiKey: string, model: string) {
 export function getOllamaModel(model: string) {
   console.log('⚡ getOllamaModel fonction appelée avec model:', model);
   
-  const baseURL = import.meta.env.VITE_OLLAMA_API_BASE_URL || 'http://localhost:11434/api';
+  const baseURL = import.meta.env.VITE_OLLAMA_API_BASE_URL;
   console.log('📍 baseURL utilisée:', baseURL);
 
   const ollama = createOllama({
