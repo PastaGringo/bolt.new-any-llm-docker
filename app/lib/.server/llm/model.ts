@@ -41,10 +41,15 @@ export function getGroqModel(apiKey: string, model: string) {
 }
 
 export function getOllamaModel(model: string) {
+  console.log('⚡ getOllamaModel fonction appelée avec model:', model);
+  
   const baseURL = process.env.OLLAMA_API_BASE_URL || 'http://localhost:11434/api';
+  console.log('📍 baseURL utilisée:', baseURL);
+
   const ollama = createOllama({
     baseURL: baseURL,
   });
+  console.log('✅ Instance ollama créée');
 
   return ollama(model);
 }
